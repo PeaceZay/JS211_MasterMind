@@ -59,8 +59,14 @@ const mastermind = (guess) => {
    return ("Congradulations! You Won!")
 
  } else {
-
- }
+  hint = generateHint(guess)
+  if (board.length == 10) {
+    console.log(`You ran out of turns! The solution was ${solution}`)
+  } else {
+    board.push(guess.concat(" ", hint))
+    console.log("Guess again.")
+  }
+}
 }
 
 
@@ -97,6 +103,7 @@ if (typeof describe === 'function') {
   });
 
 } else {
+  
 
   generateSolution();
   getPrompt();
