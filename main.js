@@ -19,7 +19,7 @@ const printBoard = () =>  {
 
 const generateSolution = () =>  {
   for (let i = 0; i < 4; i++) {
-    const randomIndex = getRandomInt(0, letters.length);
+    let randomIndex = getRandomInt(0, letters.length);
     solution += letters[randomIndex];
   }
 }
@@ -33,12 +33,12 @@ let correctGuessLocation = 0
 let correctGuessLetter = 0
 let solutionArray = solution.split("")
 let guessArray = guess.split("")
-}
+
 
 for (let i = 0; i < solutionArray.length; i++) {
   if (solutionArray[i] == guessArray[i]) {
     correctGuessLocations++
-    solutionArray[i] = null
+    solutionArray[i] = 0
   }
 }
 
@@ -46,7 +46,7 @@ for (let i = 0; i < solutionArray.length; i++) {
   let targetIndex = solutionArray.indexOf(guessArray[i])
   if (targetIndex > -1) {
     correctGuessLetters++
-    solutionArray[targetIndex] = null
+    solutionArray[targetIndex] = 0
   }
 }
 return `${correctGuessLocations}-${correctGuessLetters}`
